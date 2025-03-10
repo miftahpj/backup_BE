@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
+use Laravel\Sanctum\Sanctum;
+use Illuminate\Pagination\Paginator;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Bootstrap any application services.
+     */
+    public function boot(): void
+    {
+        // Pastikan panjang default string tidak terlalu pendek untuk migrasi
+        Schema::defaultStringLength(191);
+
+        // Jika mengalami masalah dengan migrasi Sanctum, gunakan ini:
+        Sanctum::ignoreMigrations();
+
+    }
+
+    /**
+     * Register any application services.
+     */
+    public function register(): void
+    {
+        //
+    }
+}
